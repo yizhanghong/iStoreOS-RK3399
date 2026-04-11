@@ -57,6 +57,8 @@ echo "src-git fancontrol https://github.com/DHDAXCW/luci-app-fancontrol.git" >> 
 echo "
 CONFIG_PACKAGE_luci-app-fancontrol=y
 " >> .config
+sed -i "s/hwmon9/hwmon2/g" feeds/fancontrol/luci-app-fancontrol/htdocs/luci-static/resources/view/fancontrol.js
+
 
 echo "
 CONFIG_TARGET_ROOTFS_TARGZ=y
