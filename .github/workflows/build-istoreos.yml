@@ -30,6 +30,7 @@ on:
           - tvi3315a
           - xiaobao-nas
           - zysj-1739a
+          - e88a
   #schedule:
   # - cron: 0 16 * * 4          
   # #     分,时,日,月,周。每周五 20时执行一次 (UTC时间)
