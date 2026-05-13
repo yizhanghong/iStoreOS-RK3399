@@ -76,18 +76,16 @@ diff --git a/dts/upstream/src/arm64/rockchip/rk3588-e88a.dts b/dts/upstream/src/
 new file mode 100644
 --- /dev/null
 +++ b/dts/upstream/src/arm64/rockchip/rk3588-e88a.dts	2026-04-08 09:45:53.079921000 +0800
-@@ -0,0 +1,879 @@
+@@ -0,0 +1,877 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
 +/dts-v1/;
 +
 +#include <dt-bindings/gpio/gpio.h>
 +#include <dt-bindings/leds/common.h>
-+#ifdef DTS_NO_LEGACY
-+#include <dt-bindings/soc/rockchip,vop2.h>
-+#else
-+#include <dt-bindings/display/rockchip_vop.h>
-+#endif
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/usb/pd.h>
 +#include "rk3588.dtsi"
 +
 +/ {
