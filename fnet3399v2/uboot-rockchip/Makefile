@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_VERSION:=2024.10
-PKG_RELEASE:=7
+PKG_RELEASE:=1
 PKG_HASH:=b28daf4ac17e43156363078bf510297584137f6df50fced9b12df34f61a92fb0
 
 PKG_MAINTAINER:=Sarah Maedel <openwrt@tbspace.de>
@@ -136,13 +136,6 @@ define U-Boot/nanopi-r4s-rk3399
     friendlyarm_nanopi-r4s-enterprise
 endef
 
-define U-Boot/nanopi-r4se-rk3399
-  $(U-Boot/rk3399/Default)
-  NAME:=NanoPi R4SE
-  BUILD_DEVICES:= \
-	friendlyarm_nanopi-r4se
-endef
-
 define U-Boot/rock-4c-plus-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=ROCK 4C+
@@ -169,7 +162,7 @@ define U-Boot/rockpro64-rk3399
   NAME:=RockPro64
   BUILD_DEVICES:= \
     pine64_rockpro64
-endef
+endef 
 
 define U-Boot/fnet3399-rk3399
   $(U-Boot/rk3399/Default)
@@ -223,18 +216,6 @@ define U-Boot/rk3568/Default
   DEPENDS:=+PACKAGE_u-boot-$(1):trusted-firmware-a-rk3568
   ATF:=rk3568_bl31_v1.44.elf
   TPL:=rk3568_ddr_1560MHz_v1.21.bin
-endef
-
-define U-Boot/easepi-rk3568
-  $(U-Boot/rk3568/Default)
-  NAME:=Easepi RK3568
-  DEFAULT:=y
-endef
-
-define U-Boot/easepi-rk3568-rk809
-  $(U-Boot/rk3568/Default)
-  NAME:=Easepi RK3568 with RK809
-  DEFAULT:=y
 endef
 
 define U-Boot/bpi-r2-pro-rk3568
@@ -291,32 +272,6 @@ define U-Boot/rk3588/Default
   TPL:=rk3588_ddr_lp4_2112MHz_lp5_2400MHz_v1.16.bin
 endef
 
-define U-Boot/easepi-rk3588
-  $(U-Boot/rk3588/Default)
-  NAME:=Easepi RK3588
-  DEFAULT:=y
-endef
-
-define U-Boot/easepi-rk3588-lp4-1866
-  $(U-Boot/rk3588/Default)
-  NAME:=Easepi RK3588 LPDDR4 1866Mhz
-  DEPENDS:=+PACKAGE_u-boot-$(1):trusted-firmware-a-rk3588-lp4-1866
-  TPL:=rk3588_ddr_lp4_1866MHz_lp5_2400MHz_v1.16.bin
-  UBOOT_CONFIG:=easepi-rk3588
-  BUILD_DEVICES:= \
-    radxa_e52c
-endef
-
-define U-Boot/easepi-rk3588-uart2-115200
-  $(U-Boot/rk3588/Default)
-  NAME:=Easepi RK3588 UART2 115200
-  DEPENDS:=+PACKAGE_u-boot-$(1):trusted-firmware-a-rk3588-uart2-115200
-  TPL:=rk3588_ddr_lp4_2112MHz_lp5_2400MHz_uart2_115200_v1.16.bin
-  UBOOT_CONFIG:=easepi-rk3588-uart2-115200
-  BUILD_DEVICES:= \
-    lyt_t88m
-endef
-
 define U-Boot/nanopc-t6-rk3588
   $(U-Boot/rk3588/Default)
   NAME:=NanoPC T6
@@ -366,7 +321,6 @@ UBOOT_TARGETS := \
   fnet3399-rk3399 \
   nanopc-t4-rk3399 \
   nanopi-r4s-rk3399 \
-  nanopi-r4se-rk3399 \
   rock-4c-plus-rk3399 \
   rock-4se-rk3399 \
   rock-pi-4-rk3399 \
@@ -385,17 +339,12 @@ UBOOT_TARGETS := \
   radxa-cm3-io-rk3566 \
   radxa-zero-3-rk3566 \
   rock-3c-rk3566 \
-  easepi-rk3568 \
-  easepi-rk3568-rk809 \
   bpi-r2-pro-rk3568 \
   nanopi-r5c-rk3568 \
   nanopi-r5s-rk3568 \
   radxa-e25-rk3568 \
   rock-3a-rk3568 \
   rock-3b-rk3568 \
-  easepi-rk3588 \
-  easepi-rk3588-lp4-1866 \
-  easepi-rk3588-uart2-115200 \
   nanopc-t6-rk3588 \
   rock5b-rk3588 \
   sige7-rk3588 \
