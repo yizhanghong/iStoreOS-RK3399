@@ -199,7 +199,7 @@ jobs:
 
     - name: 设置 Release Tag or date
       run: |
-        RELEASE_TAG="iStoreOS-24.10-RK3399-$(date +%Y-%m)"
+        RELEASE_TAG="fanchmwrt-24.10-RK3399-$(date +%Y-%m)"
         echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
         BUILD_DATE="$(date +%Y.%m.%d)"
         echo "BUILD_DATE=${BUILD_DATE}" >> $GITHUB_ENV
