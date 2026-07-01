@@ -42,14 +42,14 @@ CONFIG_PACKAGE_brcmfmac-firmware-fnet3399=y
 
 
 # 集成CPU性能跑分脚本
-cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64 package/base-files/files/bin/coremark-arm64
-cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64.sh package/base-files/files/bin/coremark.sh
-chmod 755 package/base-files/files/bin/coremark-arm64
-chmod 755 package/base-files/files/bin/coremark.sh
+# cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64 package/base-files/files/bin/coremark-arm64
+# cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64.sh package/base-files/files/bin/coremark.sh
+# chmod 755 package/base-files/files/bin/coremark-arm64
+# chmod 755 package/base-files/files/bin/coremark.sh
 
 
 # iStoreOS-settings
-git clone --depth=1 -b main https://github.com/xiaomeng9597/istoreos-settings package/default-settings
+# git clone --depth=1 -b main https://github.com/xiaomeng9597/istoreos-settings package/default-settings
 
 # add luci-app-fancontrol
 echo "src-git fancontrol https://github.com/DHDAXCW/luci-app-fancontrol.git" >> feeds.conf.default
@@ -68,7 +68,8 @@ CONFIG_TARGET_ROOTFS_TARGZ=y
 
 # add qmodem
 echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
-./scripts/feeds update qmodem && ./scripts/feeds install -a -f -p qmodem
+./scripts/feeds update qmodem
+./scripts/feeds install -a -f -p qmodem
 # git clone -b v3.0.0 --depth=1 https://github.com/FUjr/QModem.git package/qmodem
 sed -i "s/CONFIG_PACKAGE_sms-tool/#CONFIG_PACKAGE_sms-tool/g" .config  
 sed -i "s/CONFIG_PACKAGE_luci-app-modem/#CONFIG_PACKAGE_luci-app-modem/g" .config  

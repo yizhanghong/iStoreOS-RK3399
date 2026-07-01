@@ -1,0 +1,49 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=11
+
+board_name() {
+    [ -e /tmp/sysinfo/board_name ] && cat /tmp/sysinfo/board_name || echo "generic"
+}
+
+init_wifi() {
+    local board=$(board_name)
+    case "$board" in
+        erya,fnet-3399|\
+        panther,x2)
+            case "$1" in
+                1)
+                    sleep 60
+                    /sbin/wifi up
+                    ;;
+                2)
+                    /sbin/wifi down
+                    ;;
+                3)
+                    /sbin/wifi down
+                    sleep 3
+                    /sbin/wifi up
+                    ;;
+                *)
+                    return 1
+                    ;;
+            esac
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+start() {
+    init_wifi 1
+}
+
+stop() {
+    init_wifi 2
+}
+
+restart() {
+    init_wifi 3
+}
