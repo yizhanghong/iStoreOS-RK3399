@@ -22,19 +22,19 @@ endef
 TARGET_DEVICES += erya_fnet-3399" >> target/linux/rockchip/image/armv8.mk
 
 # 复制修改好的uboot/Makefile到对应目录
-cp -f $GITHUB_WORKSPACE/fnet3399/uboot-rockchip/Makefile package/boot/uboot-rockchip/Makefile
+cp -f $GITHUB_WORKSPACE/fnet3399v2/uboot-rockchip/Makefile package/boot/uboot-rockchip/Makefile
 
 # 复制patch到对应的目录
-cp -f $GITHUB_WORKSPACE/fnet3399/uboot-rockchip/patches/993-rk3399-fnet3399-uboot.patch package/boot/uboot-rockchip/patches/993-rk3399-fnet3399-uboot.patch
+cp -f $GITHUB_WORKSPACE/fnet3399v2/uboot-rockchip/patches/993-rk3399-fnet3399-uboot.patch package/boot/uboot-rockchip/patches/993-rk3399-fnet3399-uboot.patch
 
-cp -f $GITHUB_WORKSPACE/fnet3399/kernel-rockchip/patches/993-rockchip-rk3399-fnet3399-kernel.patch target/linux/rockchip/patches-6.6/993-rockchip-rk3399-fnet3399-kernel.patch
+cp -f $GITHUB_WORKSPACE/fnet3399v2/kernel-rockchip/patches/993-rockchip-rk3399-fnet3399-kernel.patch target/linux/rockchip/patches-6.6/993-rockchip-rk3399-fnet3399-kernel.patch
 
-cp -f $GITHUB_WORKSPACE/fnet3399/kernel-rockchip/02_network target/linux/rockchip/armv8/base-files/etc/board.d/02_network
+cp -f $GITHUB_WORKSPACE/fnet3399v2/kernel-rockchip/02_network target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 
 
 # 集成wifi
-cp -a $GITHUB_WORKSPACE/fnet3399/packages/* package/firmware/
-cp -f $GITHUB_WORKSPACE/fnet3399/opwifi package/base-files/files/etc/init.d/opwifi
+cp -a $GITHUB_WORKSPACE/fnet3399v2/packages/* package/firmware/
+cp -f $GITHUB_WORKSPACE/fnet3399v2/opwifi package/base-files/files/etc/init.d/opwifi
 chmod 755 package/base-files/files/etc/init.d/opwifi
 echo "
 CONFIG_PACKAGE_brcmfmac-firmware-fnet3399=y
