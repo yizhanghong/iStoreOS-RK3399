@@ -16,4 +16,5 @@ author="yizhanghong"
 sed -i "s/DISTRIB_DESCRIPTION.*/DISTRIB_DESCRIPTION='%D %V ${date_version} by ${author}'/g" package/base-files/files/etc/openwrt_release
 sed -i "s/OPENWRT_RELEASE.*/OPENWRT_RELEASE=\"%D %V ${date_version} by ${author}\"/g" package/base-files/files/usr/lib/os-release
 # 指定版本package  
-sed -i "s/fanchmwrt-packages.git/fanchmwrt-packages.git^aec7879f075287dd0f3010ebdeeb90a21eedb996/g" feeds.conf.default
+sed -i "s/src-git fanchmwrt/#src-git fanchmwrt/g" feeds.conf.default
+echo "src-git fanchmwrt https://github.com/fanchmwrt/fanchmwrt-packages.git^aec7879f075287dd0f3010ebdeeb90a21eedb996" >> feeds.conf.default
