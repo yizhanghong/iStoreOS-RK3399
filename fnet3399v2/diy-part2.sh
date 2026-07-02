@@ -42,6 +42,7 @@ CONFIG_PACKAGE_brcmfmac-firmware-fnet3399=y
 
 # 指定版本package  
 sed -i "s/fanchmwrt-packages.git/fanchmwrt-packages.git^aec7879f075287dd0f3010ebdeeb90a21eedb996/g" feeds.conf.default 
+./scripts/feeds update fanchmwrt && ./scripts/feeds install -a -f -p fanchmwrt
 
 # 集成CPU性能跑分脚本
 # cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark-arm64 package/base-files/files/bin/coremark-arm64
