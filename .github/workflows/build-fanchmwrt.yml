@@ -215,7 +215,7 @@ jobs:
         replacesArtifacts: true 
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |  
-          ### iStoreOS Image Information  
+          ### fanchmwrt Image Information  
           - 💻 CPU: rk3399    
           - 📂 源码: ${{ env.REPO_URL }}
           - 🌳 分支: ${{ matrix.REPO_BRANCH }}  
@@ -223,7 +223,7 @@ jobs:
           - 👤 用户名: root
           - 🔒 密码: password
           - 📒 说明: 如果设备只有一个网口，则此网口就是 `LAN` ；如果设备有两个网口，则一个是 `WAN`，一个是`LAN`，需要接入主路由器后进后台查找对应IP地址再访问。
-          ### iStoreOS Image Verification  
+          ### fanchmwrt Image Verification  
           - sha256sum   
         draft: false  
         prerelease: false
