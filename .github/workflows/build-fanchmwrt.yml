@@ -60,7 +60,7 @@ jobs:
         ARCHITECTURE:
           - aarch64_cortex-a53
         os:
-          - ubuntu-22.04
+          - ubuntu-24.04
 
       fail-fast: false
 
