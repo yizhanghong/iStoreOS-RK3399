@@ -97,3 +97,30 @@ CONFIG_PACKAGE_quectel-CM-5G=y
 CONFIG_PACKAGE_quectel-CM-5G-M=y
 " >> .config
 
+
+# ================= QCA2066 (qcn2066) Wi-Fi 6E 支持 =================
+# ath11k 驱动(backports-6.12.96)已内置 QCA2066, 此处仅补固件与 kmod 配置.
+# 固件下载到 openwrt/files/, 由构建系统打进 rootfs (仅 fnet3399 构建生效).
+QCA2066_FW_DIR="files/lib/firmware/ath11k/QCA2066/hw2.1"
+QCA2066_FW_URLS=(
+  "https://gitlab.com/kernel-firmware/linux-firmware/-/raw/main/ath11k/QCA2066/hw2.1"
+  "https://raw.githubusercontent.com/linux-firmware/linux-firmware/main/ath11k/QCA2066/hw2.1"
+)
+mkdir -p "$QCA2066_FW_DIR"
+for f in amss.bin board-2.bin m3.bin; do
+  if [ ! -s "$QCA2066_FW_DIR/$f" ]; then
+    for base in "${QCA2066_FW_URLS[@]}"; do
+      echo "Downloading QCA2066 firmware: $f"
+      curl -fsSL --retry 3 --max-time 600 -o "$QCA2066_FW_DIR/$f" "$base/$f" && break
+    done
+  fi
+done
+for f in amss.bin board-2.bin m3.bin; do
+  [ -s "$QCA2066_FW_DIR/$f" ] || echo "WARNING: QCA2066 firmware $f download failed!"
+done
+
+# 确保 ath11k 驱动模块被选中 (fnet3399/.config 已含, 双保险)
+grep -q "^CONFIG_PACKAGE_kmod-ath11k=y" .config || echo "CONFIG_PACKAGE_kmod-ath11k=y" >> .config
+grep -q "^CONFIG_PACKAGE_kmod-ath11k-pci=y" .config || echo "CONFIG_PACKAGE_kmod-ath11k-pci=y" >> .config
+# ================= QCA2066 END =================
+
